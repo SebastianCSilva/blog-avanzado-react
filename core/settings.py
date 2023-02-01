@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'apps.blog',
+    'apps.category',
 ]
 
 CKEDITOR_CONFIGS = {
