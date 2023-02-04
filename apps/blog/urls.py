@@ -3,5 +3,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('', BlogListView.as_view()),
+    path('<post_slug>/', PostDetailView.as_view()),
+
 ]

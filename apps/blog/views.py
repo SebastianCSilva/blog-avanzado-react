@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_404
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
+from django.shortcuts import render, get_object_or_404
+
 # Create your views here.
 
 from .models import Post
@@ -26,6 +27,6 @@ class BlogListView(APIView):
 
 class PostDetailView(APIView):
     def get(self, request, post_slug, format=None):
-        post = get_object_404(Post, slug=post_slug)
+        post = get_object_or_404(Post, slug=post_slug)
         serializer = PostSerializer(post)
         return Response({'post': serializer.data}, status=status.HTTP_200_OK)
