@@ -6,7 +6,7 @@ import {
     GET_BLOG_FAIL,
     GET_BLOG_PAGINATION_RESULTS_SUCCESS,
     GET_BLOG_PAGINATION_RESULTS_FAIL,
-} from "./types"
+} from "./types";
 
 export const get_blog_list = () => async dispatch => {
 
