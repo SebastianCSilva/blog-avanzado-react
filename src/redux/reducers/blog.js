@@ -5,7 +5,7 @@ import {
     GET_BLOG_FAIL,
     GET_BLOG_PAGINATION_RESULTS_SUCCESS,
     GET_BLOG_PAGINATION_RESULTS_FAIL,
-} from "./types"
+} from "../actions/types";
 
 const initialState = {
     blog_list: null,
