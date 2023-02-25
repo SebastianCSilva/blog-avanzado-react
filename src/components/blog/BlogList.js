@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
 import { useEffect } from "react";
 import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
+import LoadingCard from "components/loaders/LoadingCard";
 
 function BlogList({
     get_blog_list,
@@ -13,7 +14,14 @@ function BlogList({
     },[])
 
     return(
-        <div>blog list</div>
+        <div>
+            {
+                blog_list ?
+                <>List</>
+                :
+                <LoadingCard/>
+            }
+        </div>
     )
 }
 
