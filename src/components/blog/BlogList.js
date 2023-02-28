@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
 import LoadingCard from "components/loaders/LoadingCard";
 import BlogCard from "./BlogCard";
+import Pagination from "components/paginacion/Pagination";
 
 function BlogList({
     get_blog_list,
@@ -32,6 +33,7 @@ function BlogList({
                                     ))
                                 }
                             </div>
+                            <Pagination/>
                         </div>
                     </div>
                 </>
