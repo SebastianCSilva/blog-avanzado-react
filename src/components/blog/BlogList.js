@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import { useEffect } from "react";
 import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
 import LoadingCard from "components/loaders/LoadingCard";
+import BlogCard from "./BlogCard";
 
 function BlogList({
     get_blog_list,
@@ -27,7 +28,7 @@ function BlogList({
                             <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
                                 {
                                     blog_list.map(post=>(
-                                        <>POST</>
+                                        <BlogCard/>
                                     ))
                                 }
                             </div>
