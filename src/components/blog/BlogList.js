@@ -3,12 +3,13 @@ import { useEffect } from "react";
 import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
 import LoadingCard from "components/loaders/LoadingCard";
 import BlogCard from "./BlogCard";
-import Pagination from "components/paginacion/Pagination";
+import SmallSetPagination from "components/paginacion/SmallSetPagination";
 
 function BlogList({
     get_blog_list,
     get_blog_list_page,
-    blog_list
+    blog_list,
+    count
 }){
 
     useEffect(()=>{
@@ -33,7 +34,7 @@ function BlogList({
                                     ))
                                 }
                             </div>
-                            <Pagination/>
+                            <SmallSetPagination get_blog_list_page={get_blog_list_page} blog_list={blog_list} count={count}/>
                         </div>
                     </div>
                 </>
@@ -45,8 +46,8 @@ function BlogList({
 }
 
 const mapStateToProps = state =>({
-    blog_list: state.blog.blog_list
-
+    blog_list: state.blog.blog_list,
+    count: state.blog.count
 })
 
 export default connect(mapStateToProps,{
