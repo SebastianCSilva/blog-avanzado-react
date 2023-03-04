@@ -1,3 +1,4 @@
+import BlogCategories from "components/blog/BlogCategories";
 import BlogList from "components/blog/BlogList";
 import Header from "components/blog/Header";
 import FullWidthLayout from "hocs/layouts/FullWidthLayout";
@@ -12,6 +13,7 @@ function Blog({
     return(
         <FullWidthLayout>
             <Header/>
+            <BlogCategories/>
             <BlogList/>
         </FullWidthLayout>
     )
