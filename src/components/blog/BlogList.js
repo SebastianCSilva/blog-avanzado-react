@@ -12,9 +12,7 @@ function BlogList({
     count
 }){
 
-    useEffect(()=>{
-        get_blog_list()
-    },[])
+
 
     return(
         <div>
