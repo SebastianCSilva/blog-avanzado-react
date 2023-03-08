@@ -139,7 +139,7 @@ export const get_blog_list_category_page = (category_id,p) => async dispatch => 
     };
 
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}/?p=${p}`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}?p=${p}`, config)
 
 
         if (res.status === 200){

@@ -4,11 +4,13 @@ import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
 import LoadingCard from "components/loaders/LoadingCard";
 import BlogCard from "./BlogCard";
 import SmallSetPagination from "components/paginacion/SmallSetPagination";
+import CategoriesSmallSetPagination from "components/paginacion/CategoriesSmallSetPagination";
 
-function BlogList({
+function CategoryBlogList({
     get_blog_list_page,
     blog_list,
-    count
+    count,
+    category_id
 }){
 
 
@@ -31,7 +33,7 @@ function BlogList({
                                     ))
                                 }
                             </div>
-                            <SmallSetPagination get_blog_list_page={get_blog_list_page} blog_list={blog_list} count={count}/>
+                            <CategoriesSmallSetPagination get_blog_list_page={get_blog_list_page} blog_list={blog_list} count={count} category_id={category_id}/>
                         </div>
                     </div>
                 </>
@@ -48,4 +50,4 @@ const mapStateToProps = state =>({
 
 export default connect(mapStateToProps,{
 
-})(BlogList)
+})(CategoryBlogList)
