@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 
 # Create your views here.
 
@@ -47,3 +48,16 @@ class PostDetailView(APIView):
         post = get_object_or_404(Post, slug=post_slug)
         serializer = PostSerializer(post)
         return Response({'post': serializer.data}, status=status.HTTP_200_OK)
+
+class SearchBlogView(APIView):
+
+    def get(self, request, search_term):
+        matches = Post.postobjects.filter(
+            Q(title__icontains=search_term) |
+            Q(description__icontains=search_term) |
+            Q(category__name__icontains=search_term)
+        )
+        paginator = MediumSetPagination()
+        # results = paginator.paginate_queryset(matches, request)
+        serializer = PostSerializer(matches, many=True)
+        return Response({'filtered_posts':serializer.data}, status=status.HTTP_200_OK)
