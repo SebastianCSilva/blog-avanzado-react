@@ -8,6 +8,8 @@ import {
     GET_BLOG_PAGINATION_RESULTS_FAIL,
     GET_BLOG_LIST_CATEGORIES_SUCCESS,
     GET_BLOG_LIST_CATEGORIES_FAIL,
+    GET_SEARCH_BLOG_FAIL,
+    GET_SEARCH_BLOG_SUCCESS
 } from "./types";
 
 export const get_blog_list = () => async dispatch => {
@@ -156,6 +158,36 @@ export const get_blog_list_category_page = (category_id,p) => async dispatch => 
     }catch{
         dispatch({
                 type: GET_BLOG_LIST_CATEGORIES_FAIL
+            });
+    }
+}
+
+export const search_blog = (search_term) => async dispatch => {
+
+    const config = {
+        headers: {
+            'Accept': 'application/json'
+        }
+    };
+
+    try{
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/search/${search_term}`, config)
+
+
+        if (res.status === 200){
+            dispatch({
+                type: GET_SEARCH_BLOG_SUCCESS,
+                payload: res.data
+            });
+        } else {
+            dispatch({
+                type: GET_SEARCH_BLOG_FAIL
+            });
+        }
+
+    }catch{
+        dispatch({
+                type: GET_SEARCH_BLOG_FAIL
             });
     }
 }
