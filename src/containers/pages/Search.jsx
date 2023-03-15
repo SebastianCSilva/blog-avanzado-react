@@ -8,9 +8,9 @@ function Search(){
     const term = params.term
 
     return(
-        <div>
+        <FullWidthLayout>
             Search
-        </div>
+        </FullWidthLayout>
     )
 }
 
