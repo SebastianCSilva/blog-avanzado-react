@@ -1,11 +1,20 @@
 import { connect } from "react-redux";
 import FullWidthLayout from "hocs/layouts/FullWidthLayout";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { search_blog } from "redux/actions/blog";
 
-function Search(){
+function Search({
+    search_blog,
+    posts
+}){
 
     const params = useParams()
     const term = params.term
+
+    useEffect(()=>{
+        search_blog(term)
+    },[])
 
     return(
         <FullWidthLayout>
@@ -15,9 +24,9 @@ function Search(){
 }
 
 const mapStateToProps = state =>({
-
+    posts: state.blog.filtered_posts
 })
 
 export default connect(mapStateToProps, {
-
+    search_blog
 })(Search)
