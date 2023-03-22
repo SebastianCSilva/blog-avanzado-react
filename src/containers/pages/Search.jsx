@@ -9,7 +9,7 @@ function Search(){
 
     return(
         <FullWidthLayout>
-            Search
+            {term}
         </FullWidthLayout>
     )
 }
