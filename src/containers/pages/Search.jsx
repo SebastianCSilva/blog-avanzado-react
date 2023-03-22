@@ -3,6 +3,7 @@ import FullWidthLayout from "hocs/layouts/FullWidthLayout";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { search_blog } from "redux/actions/blog";
+import BlogListSearch from "components/blog/BlogListSearch";
 
 function Search({
     search_blog,
@@ -18,7 +19,7 @@ function Search({
 
     return(
         <FullWidthLayout>
-            {term}
+            <BlogListSearch blog_list={posts}/>
         </FullWidthLayout>
     )
 }
