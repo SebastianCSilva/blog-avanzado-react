@@ -1,9 +1,8 @@
+import LoadingCard from "components/loaders/LoadingCard"
+import SmallSetPagination from "components/paginacion/SmallSetPagination"
+import { useEffect } from "react"
 import { connect } from "react-redux"
-import { useEffect } from "react";
-import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
-import LoadingCard from "components/loaders/LoadingCard";
-import BlogCard from "./BlogCard";
-import SmallSetPagination from "components/paginacion/SmallSetPagination";
+import BlogCard from "./BlogCard"
 
 function BlogList({
     blog_list,

@@ -31,7 +31,11 @@ function BlogList({
                                     ))
                                 }
                             </div>
-                            <SmallSetPagination get_blog_list_page={get_blog_list_page} blog_list={blog_list} count={count}/>
+                            <SmallSetPagination 
+                            get_blog_list_page={get_blog_list_page} 
+                            blog_list={blog_list} 
+                            count={count}
+                        />
                         </div>
                     </div>
                 </>
