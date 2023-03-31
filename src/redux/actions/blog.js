@@ -4,13 +4,11 @@ import {
     GET_BLOG_LIST_FAIL,
     GET_BLOG_SUCCESS,
     GET_BLOG_FAIL,
-    GET_BLOG_PAGINATION_RESULTS_SUCCESS,
-    GET_BLOG_PAGINATION_RESULTS_FAIL,
     GET_BLOG_LIST_CATEGORIES_SUCCESS,
     GET_BLOG_LIST_CATEGORIES_FAIL,
-    GET_SEARCH_BLOG_FAIL,
-    GET_SEARCH_BLOG_SUCCESS
-} from "./types";
+    GET_SEARCH_BLOG_SUCCESS,
+    GET_SEARCH_BLOG_FAIL
+} from "./types"
 
 export const get_blog_list = () => async dispatch => {
 
@@ -21,24 +19,23 @@ export const get_blog_list = () => async dispatch => {
     };
 
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`, config);
 
-
-        if (res.status === 200){
+        if (res.status === 200) {
             dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_SUCCESS,
+                type: GET_BLOG_LIST_SUCCESS,
                 payload: res.data
             });
         } else {
             dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_FAIL
+                type: GET_BLOG_LIST_FAIL
             });
         }
 
     }catch{
         dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_FAIL
-            });
+            type: GET_BLOG_LIST_FAIL
+        });
     }
 }
 
@@ -51,54 +48,23 @@ export const get_blog_list_page = (p) => async dispatch => {
     };
 
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/?p=${p}`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/?p=${p}`, config);
 
-
-        if (res.status === 200){
+        if (res.status === 200) {
             dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_SUCCESS,
+                type: GET_BLOG_LIST_SUCCESS,
                 payload: res.data
             });
         } else {
             dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_FAIL
+                type: GET_BLOG_LIST_FAIL
             });
         }
 
     }catch{
         dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_FAIL
-            });
-    }
-}
-
-export const get_blog = (slug) => async dispatch => {
-
-    const config = {
-        headers: {
-            'Accept': 'application/json'
-        }
-    };
-
-    try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/?p=${slug}`, config)
-
-
-        if (res.status === 200){
-            dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_SUCCESS,
-                payload: res.data
-            });
-        } else {
-            dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_FAIL
-            });
-        }
-
-    }catch{
-        dispatch({
-                type: GET_BLOG_PAGINATION_RESULTS_FAIL
-            });
+            type: GET_BLOG_LIST_FAIL
+        });
     }
 }
 
@@ -111,10 +77,9 @@ export const get_blog_list_category = (category_id) => async dispatch => {
     };
 
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}`, config);
 
-
-        if (res.status === 200){
+        if (res.status === 200) {
             dispatch({
                 type: GET_BLOG_LIST_CATEGORIES_SUCCESS,
                 payload: res.data
@@ -127,10 +92,11 @@ export const get_blog_list_category = (category_id) => async dispatch => {
 
     }catch{
         dispatch({
-                type: GET_BLOG_LIST_CATEGORIES_FAIL
-            });
+            type: GET_BLOG_LIST_CATEGORIES_FAIL
+        });
     }
 }
+
 
 export const get_blog_list_category_page = (category_id,p) => async dispatch => {
 
@@ -141,10 +107,9 @@ export const get_blog_list_category_page = (category_id,p) => async dispatch => 
     };
 
     try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}?p=${p}`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/category/${category_id}?p=${p}`, config);
 
-
-        if (res.status === 200){
+        if (res.status === 200) {
             dispatch({
                 type: GET_BLOG_LIST_CATEGORIES_SUCCESS,
                 payload: res.data
@@ -157,10 +122,38 @@ export const get_blog_list_category_page = (category_id,p) => async dispatch => 
 
     }catch{
         dispatch({
-                type: GET_BLOG_LIST_CATEGORIES_FAIL
-            });
+            type: GET_BLOG_LIST_CATEGORIES_FAIL
+        });
     }
 }
+
+export const get_blog = (slug) => async dispatch => {
+
+    const config = {
+        headers: {
+            'Accept': 'application/json'
+        }
+    };
+
+    try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/${slug}`, config);
+
+        if (res.status === 200) {
+            dispatch({
+                type: GET_BLOG_SUCCESS,
+                payload: res.data
+            });
+        } else {
+            dispatch({
+                type: GET_BLOG_FAIL
+            });
+        }
+    } catch (err) {
+        dispatch({
+            type: GET_BLOG_FAIL
+        });
+    }
+};
 
 export const search_blog = (search_term) => async dispatch => {
 
@@ -170,11 +163,10 @@ export const search_blog = (search_term) => async dispatch => {
         }
     };
 
-    try{
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/search/${search_term}`, config)
+    try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/search/${search_term}`, config);
 
-
-        if (res.status === 200){
+        if (res.status === 200) {
             dispatch({
                 type: GET_SEARCH_BLOG_SUCCESS,
                 payload: res.data
@@ -184,10 +176,9 @@ export const search_blog = (search_term) => async dispatch => {
                 type: GET_SEARCH_BLOG_FAIL
             });
         }
-
-    }catch{
+    } catch (err) {
         dispatch({
-                type: GET_SEARCH_BLOG_FAIL
-            });
+            type: GET_SEARCH_BLOG_FAIL
+        });
     }
-}
+};

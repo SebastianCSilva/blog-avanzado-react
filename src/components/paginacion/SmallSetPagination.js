@@ -8,27 +8,26 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
     const [currentPage, setCurrentPage] = useState(1);
 
     const visitPage = (page) => {
-      window.scrollTo(0, 0);
-      setCurrentPage(page);
-      setActive(page);
-      get_blog_list_page(page);
+        // window.scrollTo(0, 0);
+        setCurrentPage(page);
+        setActive(page);
+        get_blog_list_page(page)
     }
 
     const previous_number = () => {
-      window.scrollTo(0, 0);
-      if(currentPage !==1){
-        setCurrentPage(currentPage-1)
-        setActive(currentPage-1);
-        get_blog_list_page(currentPage-1);
-      }
+      // window.scrollTo(0, 0);
+        if (currentPage !== 1) {
+            setCurrentPage(currentPage-1);
+            setActive(currentPage-1);
+            get_blog_list_page(currentPage-1)
+        }
     };
 
-    const next_number = () => {
-      window.scrollTo(0, 0);
-      if(currentPage !== Math.ceil(blog_list.length/3)){
-        setCurrentPage(currentPage+1)
-        setActive(currentPage+1);
-        get_blog_list_page(currentPage+1);
+    const next_number = () => {window.scrollTo(0, 0);
+      if (currentPage !== Math.ceil(blog_list.length/3)) {
+          setCurrentPage(currentPage+1);
+          setActive(currentPage+1);
+          get_blog_list_page(currentPage+1)
       }
     };
 
@@ -36,31 +35,30 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
 
     const getNumbers = () => {
       let itemsPerPage = listingsPerPage;
-      let pageNumber =1;
+      let pageNumber = 1;
 
-      for (let i = 0; i < count; i+= itemsPerPage){
+      for (let i = 0; i < count; i += itemsPerPage) {
         const page = pageNumber;
         let content = null;
 
-        if (active === page){
+        if (active === page) {
           content = (
-            <div key={i} className={'hidden md:-mt-px md:flex'}>
-              <div className="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
-                {pageNumber}
+              <div key={i} className={`hidden md:-mt-px md:flex`}>
+                  <div className="border-indigo-500 text-indigo-600 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+                  {pageNumber}
+                  </div>
               </div>
-
-            </div>
           );
         }
         else {
           content = (
-            <div key={i} onClick={() => {
-              visitPage(page)
-            }} className={'hidden md:-mt-px md:flex'}>
-              <div className="cursor-pointer border-transparent text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
-                {pageNumber}
+              <div key={i} onClick={() => {
+                visitPage(page)
+                }} className={`hidden md:-mt-px md:flex`}>
+                <div className="cursor-pointer border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+                  {pageNumber}
+                </div>
               </div>
-            </div>
           );
         }
 
@@ -75,7 +73,9 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
 
     return(
         <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+          
           <div className="-mt-px w-0 flex-1 flex">
+        
             <button
               onClick={()=>{previous_number()}}
               className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -96,7 +96,8 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
               <ArrowNarrowRightIcon className="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
             </button>
           </div>
-    </nav>
+
+        </nav>
     )
 }
 

@@ -1,6 +1,6 @@
 import {
+    GET_CATEGORIES_SUCCESS,
     GET_CATEGORIES_FAIL,
-    GET_CATEGORIES_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -24,5 +24,4 @@ export default function categories(state = initialState, action) {
         default:
             return state
     }
-
 };

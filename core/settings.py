@@ -34,7 +34,10 @@ SITE_NAME = 'Xohayo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -51,7 +54,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'apps.blog',
-    'apps.category',
+    'apps.category'
 ]
 
 CKEDITOR_CONFIGS = {

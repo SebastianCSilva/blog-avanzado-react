@@ -5,9 +5,9 @@ import {
     GET_BLOG_FAIL,
     GET_BLOG_LIST_CATEGORIES_SUCCESS,
     GET_BLOG_LIST_CATEGORIES_FAIL,
-    GET_SEARCH_BLOG_FAIL,
-    GET_SEARCH_BLOG_SUCCESS
-} from "../actions/types";
+    GET_SEARCH_BLOG_SUCCESS,
+    GET_SEARCH_BLOG_FAIL
+} from '../actions/types';
 
 const initialState = {
     blog_list: null,
@@ -16,7 +16,7 @@ const initialState = {
     post: null,
     count: null,
     next: null,
-    previous: null,
+    previous: null
 };
 
 export default function blog(state = initialState, action) {
@@ -75,7 +75,6 @@ export default function blog(state = initialState, action) {
                 ...state,
                 filtered_posts: null
             }
-
         default:
             return state
     }
