@@ -8,6 +8,7 @@ const navigation = {
       { name: 'Tecnologias', href: '#' },
       { name: 'Libros', href: '#' },
       { name: 'Ideas', href: '#' },
+      { name: 'Herramientas', href: '#' },
     ],
     redes: [
       { name: 'Twitter', href: 'https://twitter.com/SebastianCSilva' },
