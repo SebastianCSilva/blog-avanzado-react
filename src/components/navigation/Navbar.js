@@ -112,12 +112,14 @@ function Navbar(){
                     <NavLink to="/blog" className="text-lg dark:hover:text-white hover:text-gray-900 text-gray-600 dark:text-dark-txt text-md font-semibold">
                         Blog
                     </NavLink>
+                    {/* 
                     <NavLink to="/about" className="mx-4 text-lg dark:hover:text-white hover:text-gray-900 text-gray-600 dark:text-dark-txt text-md font-semibold">
                         About
                     </NavLink>
                     <NavLink to="/contact" className="text-lg dark:hover:text-white hover:text-gray-900 text-gray-600 dark:text-dark-txt text-md font-semibold">
                         Contacto
                     </NavLink>
+                    */}
                 </div>
               </div>
             </div>
